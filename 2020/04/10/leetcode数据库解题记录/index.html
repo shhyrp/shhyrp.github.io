@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="leetcode数据库解题记录176. 第二高的薪水这题主要考察limit的用法 185. 部门工资前三高的所有员工分析题意，要查找出工资前3高的员工，这里观察样例发现，这个前3高指的是不同工资的前3高。 这种求前几的第一反应肯定是排序，但是我们发现这里面还需要根据部门不同进行分组排序，这里使用order by就不是很合适了 那其实我们可以考虑找出每个部门前3高的工资都是多少，然后把每个部门大于这">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2020/04/01/hello-world/index.html">
+<meta property="og:title" content="leetcode数据库解题记录">
+<meta property="og:url" content="http://yoursite.com/2020/04/10/leetcode%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="笔记">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="leetcode数据库解题记录176. 第二高的薪水这题主要考察limit的用法 185. 部门工资前三高的所有员工分析题意，要查找出工资前3高的员工，这里观察样例发现，这个前3高指的是不同工资的前3高。 这种求前几的第一反应肯定是排序，但是我们发现这里面还需要根据部门不同进行分组排序，这里使用order by就不是很合适了 那其实我们可以考虑找出每个部门前3高的工资都是多少，然后把每个部门大于这">
 <meta property="og:locale" content="zh">
-<meta property="article:published_time" content="2020-04-01T15:58:15.793Z">
-<meta property="article:modified_time" content="2020-04-01T15:58:15.793Z">
+<meta property="article:published_time" content="2020-04-10T05:42:39.896Z">
+<meta property="article:modified_time" content="2020-04-11T05:13:29.660Z">
 <meta property="article:author" content="shhyrp">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/04/01/hello-world/">
+<link rel="canonical" href="http://yoursite.com/2020/04/10/leetcode%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E9%A2%98%E8%AE%B0%E5%BD%95/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>Hello World | 笔记</title>
+  <title>leetcode数据库解题记录 | 笔记</title>
   
 
 
@@ -150,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/10/leetcode%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E9%A2%98%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          leetcode数据库解题记录
         </h1>
 
         <div class="post-meta">
@@ -173,8 +173,15 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-04-01 23:58:15" itemprop="dateCreated datePublished" datetime="2020-04-01T23:58:15+08:00">2020-04-01</time>
+              <time title="Created: 2020-04-10 13:42:39" itemprop="dateCreated datePublished" datetime="2020-04-10T13:42:39+08:00">2020-04-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-11 13:13:29" itemprop="dateModified" datetime="2020-04-11T13:13:29+08:00">2020-04-11</time>
+              </span>
 
           
 
@@ -187,19 +194,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h1 id="leetcode数据库解题记录"><a href="#leetcode数据库解题记录" class="headerlink" title="leetcode数据库解题记录"></a>leetcode数据库解题记录</h1><h2 id="176-第二高的薪水"><a href="#176-第二高的薪水" class="headerlink" title="176. 第二高的薪水"></a><a href="https://leetcode-cn.com/problems/second-highest-salary/" target="_blank" rel="noopener">176. 第二高的薪水</a></h2><p>这题主要考察limit的用法</p>
+<h2 id="185-部门工资前三高的所有员工"><a href="#185-部门工资前三高的所有员工" class="headerlink" title="185. 部门工资前三高的所有员工"></a><a href="https://leetcode-cn.com/problems/department-top-three-salaries/" target="_blank" rel="noopener">185. 部门工资前三高的所有员工</a></h2><p>分析题意，要查找出工资前3高的员工，这里观察样例发现，这个前3高指的是不同工资的前3高。</p>
+<p>这种求前几的第一反应肯定是排序，但是我们发现这里面还需要根据部门不同进行分组排序，这里使用order by就不是很合适了</p>
+<p>那其实我们可以考虑找出每个部门前3高的工资都是多少，然后把每个部门大于这个工资的人都查找出来，但发现实现起来很麻烦。那不如转换一下思路，我们可以统计出每个人的工资在自己部门内比多少人低，如果比少于3个工资档位低（这3个档位里肯定是不含自己的），那么我们就可以认为这个人工资是部门前3高的。</p>
+<p>这里值得注意的两点：</p>
+<p>1.查找工资时要注意去重，因为这个前3高指的不是人，而是工资档位</p>
+<p>2.关联时，要注意不要用left join。因为这样对于匹配不到的结果会以null的形式存在。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select d.Name as Department, e1.Name as Employee, e1.Salary</span><br><span class="line">from Employee as e1</span><br><span class="line">join Department as d on e1.DepartmentId &#x3D; d.Id</span><br><span class="line">where 3 &gt; (</span><br><span class="line">    select count(distinct e2.Salary) </span><br><span class="line">    from Employee as e2</span><br><span class="line">    where e1.Salary &lt; e2.Salary</span><br><span class="line">    and e1.DepartmentId &#x3D; e2.DepartmentId</span><br><span class="line">)</span><br><span class="line">order by e1.DepartmentId asc,e1.Salary desc</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h2 id="262-行程和用户"><a href="#262-行程和用户" class="headerlink" title="262. 行程和用户"></a><a href="https://leetcode-cn.com/problems/trips-and-users/" target="_blank" rel="noopener">262. 行程和用户</a></h2><p>首先观察表结构，Users表的User_Id字段会因为Role的不同和Trips表的不同字段相关联，当Role为client时，User_Id和Trips表的Client_Id字段关联</p>
+<p>看题目描述要进行筛选的条件有：</p>
+<p>1.非禁止用户，也就是Banned = ‘No’且Role=’client’的用户</p>
+<p>2.订单的时间要在2013-10-01到2013-10-03之间</p>
+<p>难点在于如何统计非禁止用户的订单取消订单数，这里我使用的case when来进行查找，如果订单状态是取消状态，就赋值为1，否则为0。然后用sum函数进行统计可以得到非禁止用户的取消订单数。</p>
+<p>总订单数，则直接使用count函数就可以直接获取到</p>
+<p>值得注意的一点是，题目有要求保留两位小数，所以我们用round函数求出的结果进行精度处理</p>
+<p>sql如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select Request_at as Day, round(sum(case when Status in (&#39;cancelled_by_driver&#39;,&#39;cancelled_by_client&#39;) then 1 else 0 end)&#x2F;count(1),2) as &#96;Cancellation Rate&#96; from Users </span><br><span class="line">inner join Trips on Users_Id &#x3D; Client_id</span><br><span class="line">where Banned &#x3D; &#39;No&#39; and Role &#x3D; &#39;client&#39;</span><br><span class="line">and Request_at &gt;&#x3D;&#39;2013-10-01&#39; and Request_at &lt;&#x3D; &#39;2013-10-03&#39;</span><br><span class="line">group by Request_at</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
     </div>
 
@@ -214,11 +229,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/04/10/leetcode%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="next" title="leetcode数据库解题记录">
-      leetcode数据库解题记录 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/01/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -277,7 +292,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode数据库解题记录"><span class="nav-number">1.</span> <span class="nav-text">leetcode数据库解题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#176-第二高的薪水"><span class="nav-number">1.1.</span> <span class="nav-text">176. 第二高的薪水</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#185-部门工资前三高的所有员工"><span class="nav-number">1.2.</span> <span class="nav-text">185. 部门工资前三高的所有员工</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#262-行程和用户"><span class="nav-number">1.3.</span> <span class="nav-text">262. 行程和用户</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
